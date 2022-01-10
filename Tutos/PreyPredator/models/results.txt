@@ -1,0 +1,1 @@
+cycle: 284; nbPreys: 12; minEnergyPreys: 1.0; maxSizePreys: 1.0; nbPredators: 2; minEnergyPredators: 0.01999999999999894; maxSizePredators: 0.01999999999999894

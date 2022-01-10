@@ -1,0 +1,39 @@
+Site: https://centyllion.com/en/
+Cliquer sur simuler.
+
+Il y a deux onglets, model, et simulation. Dans l'onglet simulation, on place nos differents modèles et les faire s'executer.
+Pour l'échec, il y a les pièces et les règles (les modèles), et toutes les parties différentes (la simulation).
+On peut commencer par créer un novueau grain. (+ grain). On peut lui donner un grain, et une demi-vie. Ici, on va simuler un médicament qui se disout dans l'organisme. On peut mettre une demie vie de 360 pour simuler 360 minutes (6h). Càd qu'au bout de 360 minute, la moitié des paracétamols de départ auront disparu. Ca fonctionne par un jet de dé a chaque frame qui fait disparaitre si l'agent tire un échec total, d'où la réduction exponentielle au début, puis plus rare a la fin. On peut aussi changer la forme et la couleur pour rendre plus visible les agents.
+On peut retourner dans simulation, avec l'outil spray global tout a droite, on peut choisir combien placer d'agent, et lancer le simulateur. On peut sélectionner l'outil courbe (blanc quand séléctionné) pour en bas avoir la courbe des agents.
+
+On reste ici dans un système stimuli/réactif, et pas cognitif. On appelle ça l'émergence, ou intelligence colléctive. Chaque agent est stupide, mais forme un grand tout intelligent. Premier aspect: analogie avec des jeux de plateau. Deuxième aspect: paillasse virtuelle permettant de tout interpréter. Troisième interet: apparition de paterns
+
+
+Suivant le tutoriel, on peut ajouter un comportement (Behavior) aux agents, par exemple, les faire grossir. On ajoute une réaction, et bacteria en product.
+On ajoute un champ de sucre pour nourrir les bactéries. On ajoute un champ (field), et un agent associé, auquel on met la production de sucre à 1.00. Pour que la bactérie soit attirée par le sucre, on ajoute le sucre comme influence a 0.5 ou plus. On peut alors contraindre le fait de grossir avec le contact au sucre. On ajoute un field threshold pour contraindre l'execution de la réaction uniquement lorsqu'un champ est présent. On met a 0.01 pour diminuer rapidement le champ. De retour sur le simulateur, on peut mettre 5 grains aléatoirement, et tester la nouvelle colonie.
+You can now for instance:
+
+    Change the field threshold for sugar division (try 0.001 or 1e-6 (0.000001).
+    Prevents the sources from moving.
+    Makes the bacterias consume the sugar (production to -0.5).
+
+
+On va maintenant faire un modèle proie/prédateur. On va avoir un type d'agent proie, et un type d'agent prédateur, les bactéries, et le système immunitaire. On les crée, et on place 20 bactéries, et 500 immune. On revient sur l'onglet model, et on ajoute des comportements pour faire évoluer le système. 
+
+Primo, la division bacterienne. On ajoute une Reaction. A gauche, les réactifs. Quand on en a une nouvelle ligne, a gauche, es réactifs. Donc Bact + None donne les produits, donc on peut ajouter Bact pour qu'elle donne Bact et Bact. La source, reactive 1 fait que les caractéristique sde la source, par exemple l'age, le nom, la couleur, soit transféré au produit. Donc si une bactérie a 3 jours, quand elle se divise, alors les bactéries filles seront créées a 3 jours aussi.
+On peut ralentir la speed a 0.1, et lorsque l'age attend 20 pas. https://i.imgur.com/8iHlAZe.png
+
+On peut ajouter un nouveau comportement, appellé "Défense" pour simuler a défense immunitaire. On a comme source un agent immune. Quand elle rentre en contact avec une bact, alors une cellule immunitaire qui dévore une bactérie se retrouve renforcée avec une deuxième cellule immunitaire. Manger une bactérie la fait se diviser. On réduit la vitesse a 0.1, et on voir dans les courbes simulées une croissance forte du nombre de bactéries, puis un accroissement de la réponse immunitaire jusqu'à la destruction des bactéries. https://i.imgur.com/mSJX6Al.png
+
+Ici, les systèmes immunitaires ne meurent jamais. Une des solutions est de leur donner une demi-vie de 200. On peut changer les réglages en changeant la demi-vie des immines a 20, la vitesse de division bacterienne a 0.3, l'âge a 0, et la défense a vitesse 1. Il n'est pas possible d'aller plus vite que 1. On a alors des formes qui apparaisent, des "vagues" de bactéries qui reviennent et disparaissent, comme une maladie chronique. https://i.imgur.com/SflSkub.png
+Quand on relance, il faut penser a revenir à l'état initial. Un état initial est quand il 'y a pas de liserai rouge autour de la fenetre
+
+On peut maintenant ajouter une membrane avec une speed de 0. Elle servira d'obstacle. Dans la simulation, on la sélectionne, et avec l'outil crayon, on peut la dessiner sur la carte. (En haut il y a les boutons cancel et redo, a coté des sauvegardes.) Le tissu aura alors un rôle structurant dans l'évolution du système, stabilisant, par exemple, avec des niches où les bactéries peuvent se développer, ou déstabilisant, comme par exemple dees routes divisant des espaces naturels qui ne communiquent pas, faisant disparaitre les espèces des espaces enclavées. https://i.imgur.com/U0nq9PB.png
+
+https://www.youtube.com/watch?v=JnlULOjUhSQ On a le gros truc un macrophage, et les petits grains noir des bactéries. Quand elles mangent, elles formet un champ acide reconnues par le macrophage qui va alors chassé la bactérie, et la phagociter. Il y a un comportemet de déplacement, et de migration. On va le mettre en place. On ajoute un champ généré par les bactéries. On le crée, et il faut indiquer que c'est la bactérie qui génère ce champ. On sélectionne l'agent, et on a un slide de production. On le met a 0.5. Une bactérie va donc créer 0.5 élements de champ par simulation. Les cellules immunitaires vont alors être influencées positivement, donc attirées, par le champ, à vitesse 1 pour une attirance maximale. Si on retire l'attirance du champ, alors on voit que les bactéries gagnent, contrairement a si elles étaient attirées. Le fait de migrer est donc un aventage conséquent dans le succès du prédateur.
+Cependant, les champs traversent les membrannes, il faut donc les rendre perméables. On met alors sa permeabilité a 0 pour la rendre imperméable a la diffusion des champs. On remet l'influence des immune vers el champs.
+
+Liste des simulations: https://docs.google.com/document/d/1VWTJaFk0Gfv6Hg-cXRZ2GpT9zTwkBMf9W08ZeOKfHzQ/edit
+Exemple d'exam: https://docs.google.com/document/d/15tn39ehxa_D5kz65y6Efv5N4nRHgVCHLN0fWJXZA9Ao/edit
+
+Projet: Faire sur centyllion un projet au choix (de préférence biologique). Il y aura un google drive dans lequel on mettra le lien vers le model centyllion: 

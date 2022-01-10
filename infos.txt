@@ -1,0 +1,64 @@
+http://netlogoweb.org/launch#http://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Flocking.nlogo
+Flock d'oiseaux.
+Vision + -> Formation de flocks plus rapides. Moins de petites nuées, on a des nuées plus grandes.
+max-align-turn + -> Tourne plus dur, jusqu'a pouvoir quasiment faire des quarts de tours.
+max-coher-turn + -> permet de se baser sur la moyenne du voisinage. Peut faire des demi tours.
+Dans netlogo code: langage de la simulation. Langage propre a ce site.
+
+http://netlogoweb.org/launch#http://netlogoweb.org/assets/modelslib/Sample%20Models/Earth%20Science/Fire.nlogo
+Feu de foret. Ne brule que si des arbres touchent
+
+http://netlogoweb.org/launch#http://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Wolf%20Sheep%20Predation.nlogo
+Systeme proie prédateur
+
+http://netlogoweb.org/launch#http://netlogoweb.org/assets/modelslib/Sample%20Models/Social%20Science/Segregation.nlogo
+voisinage ethnique
+
+http://netlogoweb.org/launch#http://netlogoweb.org/assets/modelslib/Sample%20Models/Biology/Ants.nlogo
+phéromones fourmis
+
+Video robots de harvard: connaissent leur position relative en creant un système de coordonnées et en propageant leur position relative par propagation. Elles comuniquent leur position par rapport aux autres par propagation.
+
+En java, faire les fourmis:
+Un agent est une extension de l'objet. Son etat sera les attributs privés, et les perceptions et actions sont des methodes privées
+
+Projets:
+Langage au choix (GAMA, Java)...
+Trois projets. On va former des binomes. Des projets vont être proposés, et on choisira un projet dans le tas. A rendre pour mi-janvier (semaine du 18~).
+JR1: Simulation multi-agents d'un essaim de robots: implémentation du modèle Boids, et contrôle par l'humain via signaux
+	Quels types de signaux placer dans l'environement? Modele une map 2D avec des obstacles, agents robots avec comportements basés sur le voisinage en flock, agents de signaux permanents placable par l'user avec une portée limité, influence etc..., et un protocole d'évaluation pour répondre à la question scientifique
+JR2: Simulation d'un essaim de robots: implémentation d'un algo d'auto-organisation pour former des structures, et controle par l'humain de la forme
+	Comment controler de façon interactive la forme prise par l'essaim?. Agents: map2D, robots comuniquants, et moyens d'interaction (signaux, déplacements manuel des robots...), et protocole d'évaluation pour répondre à la question
+JR3: Simulation d'agents altruistes pour la résolution de conflits
+	Comment résoudre de façon coopérative des situations de conflits entre agents? (par exemple des robots qui se gennent en se déplaçant). Map 2D, robots avec des buts perso et un comportement altruiste. Interaction avec opérateur?
+
+Projets Rodin: Tous en C++ (bibliothèques fournies)
+VR1: Algorithmes et protocoles distribués
+	Implémenter "agents" d'algorithmes distribués. Algos au choix (par exemples, Singhoff) a implémenter par SMA en envois de messages. Ressources: cours d'algo distribués sur internet, livre de Michel Raynal, et quelques PDFs fournis
+VR2: Défense d'un réseau avec couplage SMA et Système Immu Artificiel
+	Ressources: publication internet + quelques PDFs
+VR3: Traitement d'image et SMA
+	Proposer une implémentation agent et méthodes de traitement d'images. Ressources: publication internet et PDFs
+
+Projets Pascal Ballet:
+PB1: Sablier
+	Sur Centyllion puis codage en Shaders. Centyllion puis CodePen + JS + Shaders. Biblio dispo sur centyllion, et codepen.io.
+	Il faudra représenter un petit systeme SMA avec des agents grains de sables (exemple donné sur centyllion). Il faudra ensuite avec les Shaders, coder ce comportement. Ensuite, ajouter la notion de pression sur les grains de sable. Leur poids va peser sur ceux du dessous. Il y aura donc une matrice des grans de sable, puis une matrice de poids sur les grans de sable, et représenter (par couleur) la pression sur les grains de sable. Pour aller plus loin, on pourrai modifier leur comportement selon la pression.
+	A faire sur CodePen, environement pour développer de l'HTML/CSS/JS directement en ligne. Faire un petit programme contenu sur quelques élements, et avoir cet exemple qui fonctionne avec les grains de sable.
+PB2: Simulation de fluide 1
+	Simuler un fluide sur une grille. 2 binomes, travail en 2+2. CodePen + JS + Shaders. Biblio dispo. A nouveau SMA avec les shaders. Bien comprendre ce qui a été fait, et le décortiquer pour reproduire ce qui a été fait en simplifié. A la fin avec tous les projets, l'idée serait de mettre des grains de sable DANS le fluide pour qu'ils se déplacent, se recomposent etc.
+PB2: Simulation de fluide 2
+
+Projets Pierre Chevailler:
+PC1: Gestion de micro-grille d'énergie renouvelable par SMA
+
+10 sujets en tout. En binome. Tous les sujets seront a faire en binome, et puis parfois il y aura 2 binomes sur un sujet. 
+Pour l'évaluation:
+- un court rapport décrivant le modèle (architecture de comportement des agents, environement, interactions...), la réalisation etc.
+- Code
+- Soutenance (10/15mn avec démo). Soutenance vers mi-janvier. Envoyer le code ~2 jours avant à l'encadrant ET a Vincent Rodin.
+
+pascal.ballet@univ-brest.fr
+pierre.chevaillier@enib.fr
+jeremy.riviere@univ-brest.fr
+vincent.rodin@univ-brest.fr
